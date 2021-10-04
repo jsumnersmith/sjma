@@ -1,77 +1,6 @@
 import * as React from "react"
 import { StaticImage } from "gatsby-plugin-image"
-
-// styles
-const pageStyles = {
-  color: "#232129",
-  margin: "0 auto",
-  maxWidth: 960,
-  width: "90%",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 20,
-  maxWidth: 800,
-  display: 'flex'
-}
-
-const paragraphStyles = {
-  marginBottom: 20,
-}
-
-const listStyles = {
-  marginBottom: 96,
-  marginLeft: 0,
-  paddingLeft: 20,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 40,
-}
-
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
-
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
-
-const columns = { 
-  display: 'flex',
-}
-
-const column = {
-  width: "45%",
-}
-
+import './main.css';
 
 // data
 const linksEnglish = [
@@ -89,6 +18,10 @@ const linksEnglish = [
       "Use this form to request food from the South Jersey Mutual Aid Network at large.",
     color: "#443F8F",
   },
+  
+]
+
+const otherLinksEnglish = [
   {
     text: "Free Baby Goods Exchange",
     url: "https://docs.google.com/document/d/e/2PACX-1vS3BL5cNIkzZ7J6_56Mpq1QKphiiNBonJIcsQT1ISqYkX_mOZyYyAVmwtZ-aOReM3TWBe4J2Q9wiEBN/pub",
@@ -98,7 +31,7 @@ const linksEnglish = [
   }
 ]
 
-const links = [
+const linksSpanish = [
   {
     text: "Banco de Alimentos de South Jersey",
     url: "https://foodbanksj.org/zip-code-locator/",
@@ -112,7 +45,10 @@ const links = [
     description:
       "Utilice esta forma para solicitar alimentos de la South Jersey Mutual Aid Network en general.",
     color: "#443F8F",
-  },
+  }
+]
+
+const otherLinksSpanish = [
   {
     text: "Intercambio Gratis de Artículos de Bebés",
     url: "https://docs.google.com/document/d/e/2PACX-1vS3BL5cNIkzZ7J6_56Mpq1QKphiiNBonJIcsQT1ISqYkX_mOZyYyAVmwtZ-aOReM3TWBe4J2Q9wiEBN/pub",
@@ -125,61 +61,96 @@ const links = [
 // markup
 const IndexPage = () => {
   return (
-    <main style={pageStyles}>
+    <main className="wrapper">
       <title>Home Page</title>
-      <header style={headingStyles}>
-        <StaticImage src="../images/logo.jpg" style={{width: 100, height: 'auto', marginRight: 20}}/> 
-        <div style={{grow: 1}}>
-          <h1 style={{margin: "5px 0 10px"}}>Más Recursos / Additional Resources</h1>
-          <h2 style={{color: "#443F8F", margin: 0}}>South Jersey Mutual Aid Network - Pennsuaken</h2>
+      <header className="header">
+        <StaticImage src="../images/logo.jpg" className="logo"/> 
+        <div className="header-inner">
+          <h1 style={{margin: "5px 0 10px"}}>South Jersey Mutual Aid Network - Pennsuaken</h1>
         </div>
       </header>
-      <div style={columns}>
-        <div style={column}>
-          <p style={paragraphStyles}>
+      <div className="columns">
+        <div className="column">
+          <h2 style={{color: "#443F8F", margin: 0}}>Más Recursos Sobre Alimentos</h2>
+          <p className="paragraph">
             Si buscas más recursos sobre alimentos, aquí son unos sitios de web que tienen mas infomaccíon. 
           </p>
-          <ul style={listStyles}>
-            {links.map(link => (
-              <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
+          <ul className="link-list">
+            {linksSpanish.map(link => (
+              <li key={link.url} className="link-list-item" style={{ color: link.color }}>
                 <span>
                   <a
-                    style={linkStyle}
+                    className="link-list-item-link"
                     href={`${link.url}`}
                   >
                     {link.text}
                   </a>
-                  {link.badge && (
-                    <span style={badgeStyle} aria-label="New Badge">
-                      NEW!
-                    </span>
-                  )}
-                  <p style={descriptionStyle}>{link.description}</p>
+                  <p className="link-list-item-description">{link.description}</p>
                 </span>
               </li>
             ))}
           </ul>
         </div>
-        <div style={{...column, marginLeft: '10%'}}>
-          <p style={paragraphStyles}>
+        <div className="column">
+          <h2 style={{color: "#443F8F", margin: 0}}>Additional Food Resources</h2>
+          <p className="paragraph">
             If you are looking for additional food resources, here are a few websites where you can find more information.
           </p>
-          <ul style={listStyles}>
+          <ul className="link-list">
             {linksEnglish.map(link => (
-              <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
+              <li key={link.url} className="link-list-item" style={{ color: link.color }}>
                 <span>
                   <a
-                    style={linkStyle}
+                    className="link-list-item-link"
                     href={`${link.url}`}
                   >
                     {link.text}
                   </a>
-                  {link.badge && (
-                    <span style={badgeStyle} aria-label="New Badge">
-                      NEW!
-                    </span>
-                  )}
-                  <p style={descriptionStyle}>{link.description}</p>
+                  <p className="link-list-item-description">{link.description}</p>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className="columns">
+        <div className="column">
+          <h2 style={{color: "#443F8F", margin: 0}}>Otras Recursos</h2>
+          <p className="paragraph">
+            Algunos recursos para udsted y su familia.
+          </p>
+          <ul className="link-list">
+            {otherLinksSpanish.map(link => (
+              <li key={link.url} className="link-list-item" style={{ color: link.color }}>
+                <span>
+                  <a
+                    className="link-list-item-link"
+                    href={`${link.url}`}
+                  >
+                    {link.text}
+                  </a>
+                  <p className="link-list-item-description">{link.description}</p>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="column">
+          <h2 style={{color: "#443F8F", margin: 0}}>Other Resources</h2>
+          <p className="paragraph">
+            Some other resources for you and your family.
+          </p>
+          <ul className="link-list">
+            {otherLinksEnglish.map(link => (
+              <li key={link.url} className="link-list-item" style={{ color: link.color }}>
+                <span>
+                  <a
+                    className="link-list-item-link"
+                    href={`${link.url}`}
+                  >
+                    {link.text}
+                  </a>
+                  <p className="link-list-item-description">{link.description}</p>
                 </span>
               </li>
             ))}
